@@ -1,0 +1,36 @@
+{
+    "name": "Hello Extensions of the world",
+    "description": "Base Level Extension",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": ["activeTab", "aiLanguageModelOriginTrial", "scripting", "tabs", "identity", "storage"],
+    "host_permissions": [
+      "https://*.youtube.com/*"
+    ],
+    "oAuth2": {
+      "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/youtube"
+      ]
+    },
+    "action": {
+      "default_popup": "hello.html",
+      "default_icon": "images/icon.png"
+    },
+    "background": {
+      "service_worker": "scripts/background.js",
+      "type": "module"
+    },
+
+      "content_scripts": [
+      {
+        "js": ["scripts/content.js"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    
+    "icons": {
+        "16": "images/icon.png"
+    }
+  }
+

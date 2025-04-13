@@ -1,0 +1,61 @@
+<html>
+  <style>
+    body 
+    {
+      background-color: #1e1e2f;
+      height: 200px;
+      width: 400px;
+    }
+
+    h1 
+    {
+      color: #be44aa;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    button 
+    {
+      color: #d81afa;
+      background-color: darkgray;
+      font-family : 'Lucida Sans';
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .button-container
+    {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: rgb(202, 22, 130) 0px 0px 5px;
+      width: fit-content;
+      margin: 0 auto;
+      border-radius: 12px;
+    }
+
+    .button-container:hover button 
+    {
+      background-color: #d81afa;
+      color: #1e1e2f;
+      transition: 0.3s;
+    }
+
+    #result
+    {
+      font-size: 15px; 
+      color: #d1c4e9;
+    }
+
+  </style>
+
+  <body>
+    <h1>YouTube SongScout</h1>
+    <div class = "button-container">
+      <button id="extensionButton">Find Similar Songs!</button>
+    </div>
+    <script src="popup.js"></script>
+    <div id = "result"></div>
+  </body>
+</html>
