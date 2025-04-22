@@ -7,3 +7,13 @@ document.getElementById("extensionButton").addEventListener("click", () => {
 
 });
 
+document.getElementById("makePlaylistButton").addEventListener("click", () => {
+
+    chrome.runtime.sendMessage({ action: "playlistButtonPressed" }, (response) => {
+
+
+    });
+
+});
+
+

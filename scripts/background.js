@@ -1,4 +1,4 @@
-import { API_KEY } from './config.js';
+import { API_KEY, YOUTUBE_API_KEY } from './config.js';
 import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai";
 
 console.log("This is a background script!");
@@ -52,4 +52,81 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         });
     }
     return true;
+});
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "playlistButtonPressed") {
+    console.log("Playlist Button pressed in popup!");
+    chrome.identity.getAuthToken({ interactive: true }, function(token) {
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+        sendResponse({ success: false });
+        return;
+      }
+
+      const playlistData = {
+        snippet: {
+          title: "My Generated Playlist",  // Name of created playlist
+          description: "Created using SongScout Extension!",  // Description of created playlist
+        },
+        status: {
+          privacyStatus: "private",  // private/public/unlisted
+        }
+      };
+
+      fetch("https://www.googleapis.com/youtube/v3/playlists?part=snippet%2Cstatus", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(playlistData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          console.error("YouTube API error:", data.error);
+          sendResponse({ success: false, error: data.error });
+        } else {
+          console.log("Playlist created!", data);
+          fetch("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet", {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer " + token,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              snippet: {
+                playlistId: data.id,
+                resourceId: {
+                  kind: "youtube#video",
+                  videoId: "kJQP7kiw5Fk"
+                }
+              }
+            })
+          })
+          .then(response => response.json())
+          .then(itemData => {
+            if (itemData.error) {
+              console.error("YouTube API error:", itemData.error);
+              sendResponse({ success: false, error: itemData.error });
+            } else {
+              console.log("Item added to playlist!", itemData);
+              sendResponse({ success: true, playlistId: data.id, item: itemData });
+            }
+          })
+          .catch(err => {
+            console.error("Fetch error:", err);
+            sendResponse({ success: false, error: err.toString() });
+          });
+        }
+      })
+      .catch(err => {
+        console.error("Playlist creation fetch error:", err);
+        sendResponse({ success: false, error: err.toString() });
+      });
+    });
+
+    return true; // Keep message channel open for async response
+  }
 });

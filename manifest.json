@@ -7,8 +7,8 @@
     "host_permissions": [
       "https://*.youtube.com/*"
     ],
-    "oAuth2": {
-      "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+    "oauth2": {
+      "client_id": "899648276585-gmlnkhvngehj82u5028ck4eut4gg68lm.apps.googleusercontent.com",
       "scopes": [
         "https://www.googleapis.com/auth/youtube"
       ]
