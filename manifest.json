@@ -5,7 +5,8 @@
     "manifest_version": 3,
     "permissions": ["activeTab", "aiLanguageModelOriginTrial", "scripting", "tabs", "identity", "storage"],
     "host_permissions": [
-      "https://*.youtube.com/*"
+      "https://*.youtube.com/*",
+      "https://www.googleapis.com/"
     ],
     "oauth2": {
       "client_id": "899648276585-gmlnkhvngehj82u5028ck4eut4gg68lm.apps.googleusercontent.com",
@@ -25,7 +26,8 @@
       "content_scripts": [
       {
         "js": ["scripts/content.js"],
-        "matches": ["<all_urls>"]
+        "matches": ["<all_urls>"],
+        "type": "module"
       }
     ],
     
