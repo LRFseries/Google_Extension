@@ -1,9 +1,12 @@
 {
-    "name": "Hello Extensions of the world",
-    "description": "Base Level Extension",
+    "name": "YouTube SongScout",
+    "description": "An AI-powered YouTube song recommendation extension and playlist creator.",
     "version": "1.0",
     "manifest_version": 3,
-    "permissions": ["activeTab", "aiLanguageModelOriginTrial", "scripting", "tabs", "identity", "storage"],
+    "permissions": ["activeTab", "aiLanguageModelOriginTrial", "scripting", "tabs", "identity", "storage", "sidePanel"],
+    "side_panel": {
+      "default_path": "sidepanel.html"
+    },
     "host_permissions": [
       "https://*.youtube.com/*",
       "https://www.googleapis.com/"
@@ -15,8 +18,7 @@
       ]
     },
     "action": {
-      "default_popup": "hello.html",
-      "default_icon": "images/icon.png"
+      "default_icon": "images/YouTube Songscout Logo 16x16.png"
     },
     "background": {
       "service_worker": "scripts/background.js",
@@ -32,7 +34,9 @@
     ],
     
     "icons": {
-        "16": "images/icon.png"
+        "16": "images/YouTube Songscout Logo 16x16.png",
+        "48": "images/YouTube Songscout Logo 48x48.png",
+        "128": "images/YouTube Songscout Logo 128x128.png"
     }
   }
 

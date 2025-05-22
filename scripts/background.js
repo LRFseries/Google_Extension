@@ -3,6 +3,26 @@ import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai";
 
 console.log("This is a background script!");
 
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.sidePanel.setOptions({
+    path: "sidepanel.html",
+    enabled: true,
+  });
+});
+
+chrome.action.onClicked.addListener((tab) => {
+  // Must be synchronous to be considered a "user gesture"
+  chrome.sidePanel.setOptions({
+    tabId: tab.id,
+    path: "sidepanel.html",
+    enabled: true,
+  }, () => {
+    chrome.sidePanel.open({ tabId: tab.id });
+  });
+});
+
+
+
 // Initialize the AI with your API key
 const ai = new GoogleGenerativeAI(API_KEY);
 
@@ -114,6 +134,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
                 const playlistId = data.id;
                 console.log("Playlist created! ID:", playlistId);
+
 
                 async function addVideosSequentially(videoIDs, playlistId, token) {
                   const errors = [];
