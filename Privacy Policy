@@ -1,0 +1,63 @@
+Thank you for using YouTube SongScout, an AI-powered music recommendation and playlist generator Chrome extension. This privacy policy outlines how we handle your data.
+
+1. What Information We Collect
+YouTube SongScout collects or accesses the following information, solely for the purpose of providing core functionality:
+
+YouTube Video Title: Retrieved from the active browser tab to generate music recommendations.
+
+YouTube Search Results: Retrieved via the YouTube Data API to display matching songs.
+
+Video IDs: Temporarily stored using chrome.storage.local to enable playlist creation.
+
+OAuth Access Token: Retrieved using chrome.identity with your permission to allow playlist creation in your YouTube account.
+
+Playlist Details: The extension creates a private playlist titled by default (e.g., “My Generated Playlist”).
+
+2. How We Use Your Information
+We use the above data locally and in real time to:
+
+Generate music suggestions based on your currently watched YouTube video.
+
+Create a private YouTube playlist in your account using the suggested songs.
+
+Enhance user experience through API-powered functionality.
+
+We do not:
+
+Collect personal information (name, email, etc.).
+
+Store or transmit data to our servers.
+
+Sell, share, or disclose your data to third parties.
+
+3. Data Storage and Security
+All data (e.g., video IDs) is stored locally within your browser using Chrome's storage.local API and is never transmitted to external servers.
+
+The extension uses the secure OAuth2 protocol provided by Chrome to authenticate your Google account for playlist creation. We do not store your token, and access is granted only with your explicit permission.
+
+4. Third-Party APIs
+We use the following APIs:
+
+Google YouTube Data API – for searching videos and creating playlists.
+
+Google Generative AI API (Gemini) – to generate music recommendations based on video titles.
+
+These APIs are subject to their respective privacy policies:
+
+YouTube API Services Terms of Service
+
+Google Privacy Policy
+
+5. User Control and Revocation
+You may revoke access to your YouTube account at any time by visiting your Google Account Permissions. You may also remove all locally stored data by uninstalling the extension or clearing extension data from Chrome settings.
+
+6. Children's Privacy
+This extension is not directed to individuals under the age of 13. We do not knowingly collect personal data from children.
+
+7. Changes to This Policy
+We may update this Privacy Policy to reflect changes in our practices. Updates will be posted on this page with a revised effective date.
+
+8. Contact
+If you have any questions or concerns about this Privacy Policy, please contact us at:
+
+📧 lrfarrell00@gmail.com
